@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="products.xsl"?>
+
+<products>
+    <product>
+        <name>Chuột không dây MiniPro</name>
+        <price>150000</price>
+        <quantity>5</quantity>
+    </product>
+
+    <product>
+        <name>Bàn phím cơ TitanKey</name>
+        <price>850000</price>
+        <quantity>20</quantity>
+    </product>
+
+    <product>
+        <name>Tai nghe Bluetooth AeroSound</name>
+        <price>300000</price>
+        <quantity>8</quantity>
+    </product>
+
+    <product>
+        <name>Màn hình 24 inch CrystalView</name>
+        <price>2500000</price>
+        <quantity>15</quantity>
+    </product>
+
+    <product>
+        <name>Laptop Gaming ThunderLite</name>
+        <price>18500000</price>
+        <quantity>12</quantity>
+    </product>
+
+    <product>
+        <name>Loa Bluetooth PocketWave</name>
+        <price>450000</price>
+        <quantity>7</quantity>
+    </product>
+
+    <product>
+        <name>USB 64GB FlashNova</name>
+        <price>120000</price>
+        <quantity>50</quantity>
+    </product>
+
+    <product>
+        <name>Sạc dự phòng 10.000mAh PowerBrick</name>
+        <price>320000</price>
+        <quantity>9</quantity>
+    </product>
+</products>

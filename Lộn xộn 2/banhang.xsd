@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="hoadonbanhang">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sohoadon" type="xs:positiveInteger"></xs:element>
+                <xs:element name="khachhang" type="xs:string"></xs:element>
+                <xs:element name="ngaylap" type="xs:date"></xs:element>
+                <xs:element name="dsbanhang">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="banhang" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="sanpham" type="xs:string"></xs:element>
+                                        <xs:element name="loai" type="loaitype"></xs:element>
+                                        <xs:element name="soluong" type="xs:nonNegativeInteger"></xs:element>
+                                        <xs:element name="dongia" type="xs:nonNegativeInteger"></xs:element>
+                                        <xs:element name="thanhtien" type="xs:nonNegativeInteger"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tongtien" type="xs:nonNegativeInteger">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Gía trị tổng tiền phải bằng tổng thành tiền của sản phẩm 
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="loaitype">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="hộp"></xs:enumeration>
+            <xs:enumeration value="thùng"></xs:enumeration>
+            <xs:enumeration value="chai"></xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

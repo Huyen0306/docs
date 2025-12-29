@@ -1,0 +1,11 @@
+<!ELEMENT hoadonsach (sohoadon,tenkhachhang,ngaylap,dssach,tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dssach (sach+)>
+<!ELEMENT sach (tensach,soluong,dongia,thanhtien)>
+<!ELEMENT tensach (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>

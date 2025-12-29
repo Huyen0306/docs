@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="banhang.xsl"?>
+<hoadonbanhang xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="banhang.xsd">
+    <sohoadon>9876</sohoadon>
+    <khachhang>Trần Thị B</khachhang>
+    <ngaylap>2020-08-10</ngaylap>
+    <dsbanhang>
+        <banhang>
+            <sanpham>Sữa tươi</sanpham>
+            <loai>hộp</loai>
+            <soluong>6</soluong>
+            <dongia>25000</dongia>
+            <thanhtien>150000</thanhtien>
+        </banhang>
+        <banhang>
+            <sanpham>mì gói</sanpham>
+            <loai>thùng</loai>
+            <soluong>2</soluong>
+            <dongia>110000</dongia>
+            <thanhtien>220000</thanhtien>
+        </banhang>
+        <banhang>
+            <sanpham>dầu ăn</sanpham>
+            <loai>chai</loai>
+            <soluong>3</soluong>
+            <dongia>45000</dongia>
+            <thanhtien>135000</thanhtien>
+        </banhang>
+    </dsbanhang>
+    <tongtien>505000</tongtien>
+</hoadonbanhang>

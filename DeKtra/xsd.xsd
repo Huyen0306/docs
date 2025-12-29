@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Phần tử gốc hoadon -->
+    <xs:element name="hoadon">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sohoadon" type="xs:positiveInteger">
+                    <xs:annotation>
+                        <xs:documentation>Số hóa đơn là số nguyên dương (> 0)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                
+                <xs:element name="hoten" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Họ tên khách hàng</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                
+                <xs:element name="ngaylap" type="xs:date">
+                    <xs:annotation>
+                        <xs:documentation>Ngày lập hóa đơn theo định dạng YYYY-MM-DD</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                
+                <xs:element name="dichvu" type="dichvuType">
+                    <xs:annotation>
+                        <xs:documentation>Danh sách các dịch vụ/mặt hàng</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                
+                <xs:element name="tongtien" type="xs:nonNegativeInteger">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Tổng tiền của hóa đơn.
+                            YÊU CẦU: Giá trị tongtien phải bằng tổng thanhtien của tất cả các mặt hàng.
+                            (Không bắt buộc validate tự động bởi XSD, cần kiểm tra bằng logic ứng dụng)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Kiểu dữ liệu cho dichvu -->
+    <xs:complexType name="dichvuType">
+        <xs:sequence>
+            <xs:element name="mathang" type="mathangType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Một hoặc nhiều mặt hàng/dịch vụ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Kiểu dữ liệu cho mathang -->
+    <xs:complexType name="mathangType">
+        <xs:sequence>
+            <xs:element name="ten" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Tên mặt hàng/dịch vụ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element name="loai" type="loaiType">
+                <xs:annotation>
+                    <xs:documentation>Loại dịch vụ: phải là một trong các giá trị "A", "4 chỗ", hoặc "1"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element name="soluong" type="xs:positiveInteger">
+                <xs:annotation>
+                    <xs:documentation>Số lượng là số nguyên dương (> 0)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element name="dongia" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>Đơn giá là số nguyên không âm (>= 0)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element name="thanhtien" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Thành tiền là số nguyên không âm (>= 0).
+                        YÊU CẦU: thanhtien = soluong × dongia
+                        (Không bắt buộc validate tự động bởi XSD, cần kiểm tra bằng logic ứng dụng)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Kiểu enum cho loai -->
+    <xs:simpleType name="loaiType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A">
+                <xs:annotation>
+                    <xs:documentation>Loại A</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4 chỗ">
+                <xs:annotation>
+                    <xs:documentation>Loại 4 chỗ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Loại 1</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

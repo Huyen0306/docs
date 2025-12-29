@@ -1,0 +1,708 @@
+# 📚 XML/XPath - 100+ Bài Toán Thực Tế
+
+> Ghi nhớ nhanh - Không giải thích dài dòng | 100+ câu Q&A
+
+---
+
+## 🎯 PHẦN 1: XPath CƠ BẢN (20 bài)
+
+### #1 - Lấy tên khách hàng
+
+```xpath
+//customer/name
+```
+
+### #2 - Lấy email khách hàng
+
+```xpath
+//customer/email
+```
+
+### #3 - Lấy số điện thoại khách hàng
+
+```xpath
+//customer/phone
+```
+
+### #4 - Lấy địa chỉ khách hàng
+
+```xpath
+//customer/address
+```
+
+### #5 - Lấy tất cả thông tin khách hàng
+
+```xpath
+//*
+```
+
+### #6 - Lấy danh sách tất cả sản phẩm
+
+```xpath
+//product
+```
+
+### #7 - Lấy tên tất cả sản phẩm
+
+```xpath
+//product/name
+```
+
+### #8 - Lấy giá tất cả sản phẩm
+
+```xpath
+//product/price
+```
+
+### #9 - Lấy số lượng sản phẩm
+
+```xpath
+//product/quantity
+```
+
+### #10 - Lấy danh mục sản phẩm
+
+```xpath
+//product/category
+```
+
+### #11 - Lấy sản phẩm đầu tiên
+
+```xpath
+//product[1]
+```
+
+### #12 - Lấy sản phẩm cuối cùng
+
+```xpath
+//product[last()]
+```
+
+### #13 - Lấy sản phẩm thứ 3
+
+```xpath
+//product[3]
+```
+
+### #14 - Lấy mô tả sản phẩm
+
+```xpath
+//product/description
+```
+
+### #15 - Lấy ID sản phẩm
+
+```xpath
+//product/@id
+```
+
+### #16 - Lấy tất cả ID
+
+```xpath
+//@id
+```
+
+### #17 - Lấy thành tiền sản phẩm
+
+```xpath
+//product/total_amount
+```
+
+### #18 - Lấy đơn vị của sản phẩm
+
+```xpath
+//product/unit
+```
+
+### #19 - Lấy ngày mua
+
+```xpath
+//order/date
+```
+
+### #20 - Lấy mã đơn hàng
+
+```xpath
+//order/@order_id
+```
+
+---
+
+## 🔍 PHẦN 2: LỌC DỮ LIỆU - ĐIỀU KIỆN ĐƠN (20 bài)
+
+### #21 - Lấy sản phẩm có đơn giá ≥ 50.000
+
+```xpath
+//product[price >= 50000]
+```
+
+### #22 - Lấy sản phẩm có đơn giá < 100.000
+
+```xpath
+//product[price < 100000]
+```
+
+### #23 - Lấy sản phẩm có số lượng = 1
+
+```xpath
+//product[quantity = 1]
+```
+
+### #24 - Lấy sản phẩm có số lượng > 5
+
+```xpath
+//product[quantity > 5]
+```
+
+### #25 - Lấy sản phẩm có tên là "Laptop"
+
+```xpath
+//product[name = 'Laptop']
+```
+
+### #26 - Lấy sản phẩm thuộc danh mục "Điện tử"
+
+```xpath
+//product[category = 'Điện tử']
+```
+
+### #27 - Lấy sản phẩm có thành tiền > 500.000
+
+```xpath
+//product[total_amount > 500000]
+```
+
+### #28 - Lấy sản phẩm có thành tiền ≤ 1.000.000
+
+```xpath
+//product[total_amount <= 1000000]
+```
+
+### #29 - Lấy khách hàng có tên "Nguyễn Văn A"
+
+```xpath
+//customer[name = 'Nguyễn Văn A']
+```
+
+### #30 - Lấy khách hàng có email chứa "@gmail.com"
+
+```xpath
+//customer[contains(email, '@gmail.com')]
+```
+
+### #31 - Lấy sản phẩm có tên chứa "Samsung"
+
+```xpath
+//product[contains(name, 'Samsung')]
+```
+
+### #32 - Lấy sản phẩm có tên bắt đầu với "Iphone"
+
+```xpath
+//product[starts-with(name, 'Iphone')]
+```
+
+### #33 - Lấy sản phẩm có tên kết thúc với "Pro"
+
+```xpath
+//product[substring(name, string-length(name) - 2) = 'Pro']
+```
+
+### #34 - Lấy đơn hàng ngày "2024-01-15"
+
+```xpath
+//order[date = '2024-01-15']
+```
+
+### #35 - Lấy sản phẩm có id = "P001"
+
+```xpath
+//product[@id = 'P001']
+```
+
+### #36 - Lấy sản phẩm có attribute status = "active"
+
+```xpath
+//product[@status = 'active']
+```
+
+### #37 - Lấy khách hàng có attribute type = "VIP"
+
+```xpath
+//customer[@type = 'VIP']
+```
+
+### #38 - Lấy sản phẩm có quantity ≠ 0
+
+```xpath
+//product[quantity != 0]
+```
+
+### #39 - Lấy sản phẩm có giá nằm trong khoảng 50.000-100.000
+
+```xpath
+//product[price >= 50000 and price <= 100000]
+```
+
+### #40 - Lấy sản phẩm có status khác "sold"
+
+```xpath
+//product[@status != 'sold']
+```
+
+---
+
+## 🧩 PHẦN 3: LỌC DỮ LIỆU - ĐIỀU KIỆN PHỨC HỢP (20 bài)
+
+### #41 - Lấy sản phẩm Điện tử có giá > 1.000.000
+
+```xpath
+//product[category = 'Điện tử' and price > 1000000]
+```
+
+### #42 - Lấy sản phẩm thuộc danh mục "Quần áo" hoặc "Giày"
+
+```xpath
+//product[category = 'Quần áo' or category = 'Giày']
+```
+
+### #43 - Lấy sản phẩm có số lượng > 10 AND giá < 500.000
+
+```xpath
+//product[quantity > 10 and price < 500000]
+```
+
+### #44 - Lấy sản phẩm có tên chứa "Iphone" AND có giá > 5.000.000
+
+```xpath
+//product[contains(name, 'Iphone') and price > 5000000]
+```
+
+### #45 - Lấy sản phẩm active (status='active') có số lượng > 0
+
+```xpath
+//product[@status = 'active' and quantity > 0]
+```
+
+### #46 - Lấy sản phẩm VIP hoặc có giá > 10.000.000
+
+```xpath
+//product[@type = 'VIP' or price > 10000000]
+```
+
+### #47 - Lấy sản phẩm không có attribute ID
+
+```xpath
+//product[not(@id)]
+```
+
+### #48 - Lấy sản phẩm có attribute nhưng không có status
+
+```xpath
+//product[@id and not(@status)]
+```
+
+### #49 - Lấy khách hàng có email @gmail hoặc @yahoo
+
+```xpath
+//customer[contains(email, '@gmail.com') or contains(email, '@yahoo.com')]
+```
+
+### #50 - Lấy sản phẩm thuộc loại "Điện tử" không phải status "sold"
+
+```xpath
+//product[category = 'Điện tử' and @status != 'sold']
+```
+
+### #51 - Lấy sản phẩm có số lượng từ 5-20 và giá từ 100k-1M
+
+```xpath
+//product[quantity >= 5 and quantity <= 20 and price >= 100000 and price <= 1000000]
+```
+
+### #52 - Lấy khách hàng VIP hoặc Premium
+
+```xpath
+//customer[@level = 'VIP' or @level = 'Premium']
+```
+
+### #53 - Lấy sản phẩm có tên bắt đầu "Samsung" hoặc "LG"
+
+```xpath
+//product[starts-with(name, 'Samsung') or starts-with(name, 'LG')]
+```
+
+### #54 - Lấy sản phẩm có tên chứa "Iphone" nhưng giá < 10.000.000
+
+```xpath
+//product[contains(name, 'Iphone') and price < 10000000]
+```
+
+### #55 - Lấy sản phẩm không chứa từ "cũ" trong tên
+
+```xpath
+//product[not(contains(name, 'cũ'))]
+```
+
+### #56 - Lấy sản phẩm có quantity > 0 và có thành tiền > 1.000.000
+
+```xpath
+//product[quantity > 0 and total_amount > 1000000]
+```
+
+### #57 - Lấy khách hàng vip có địa chỉ chứa "Hà Nội"
+
+```xpath
+//customer[@type = 'VIP' and contains(address, 'Hà Nội')]
+```
+
+### #58 - Lấy sản phẩm trong khoảng giá 500k-2M hoặc VIP
+
+```xpath
+//product[(price >= 500000 and price <= 2000000) or @type = 'VIP']
+```
+
+### #59 - Lấy sản phẩm có tên và danh mục không rỗng
+
+```xpath
+//product[name != '' and category != '']
+```
+
+### #60 - Lấy sản phẩm có mức giảm giá > 10%
+
+```xpath
+//product[discount > 10]
+```
+
+---
+
+## 📊 PHẦN 4: HÀM TÍNH TOÁN - SUM, COUNT, MAX, MIN (20 bài)
+
+### #61 - Tính tổng thành tiền tất cả sản phẩm
+
+```xpath
+sum(//product/total_amount)
+```
+
+### #62 - Tính tổng giá tất cả sản phẩm
+
+```xpath
+sum(//product/price)
+```
+
+### #63 - Tính tổng số lượng sản phẩm
+
+```xpath
+sum(//product/quantity)
+```
+
+### #64 - Đếm số lượng sản phẩm
+
+```xpath
+count(//product)
+```
+
+### #65 - Đếm số khách hàng
+
+```xpath
+count(//customer)
+```
+
+### #66 - Đếm sản phẩm có số lượng > 5
+
+```xpath
+count(//product[quantity > 5])
+```
+
+### #67 - Lấy giá cao nhất
+
+```xpath
+max(//product/price)
+```
+
+### #68 - Lấy giá thấp nhất
+
+```xpath
+min(//product/price)
+```
+
+### #69 - Lấy thành tiền cao nhất
+
+```xpath
+max(//product/total_amount)
+```
+
+### #70 - Lấy thành tiền thấp nhất
+
+```xpath
+min(//product/total_amount)
+```
+
+### #71 - Lấy sản phẩm có giá cao nhất (không dùng max)
+
+```xpath
+//product[price = max(//product/price)]
+```
+
+### #72 - Lấy sản phẩm có thành tiền lớn nhất
+
+```xpath
+//product[total_amount = max(//product/total_amount)]
+```
+
+### #73 - Tính trung bình giá sản phẩm
+
+```xpath
+sum(//product/price) div count(//product)
+```
+
+### #74 - Tính trung bình thành tiền
+
+```xpath
+sum(//product/total_amount) div count(//product)
+```
+
+### #75 - Tính tổng thành tiền các sản phẩm Điện tử
+
+```xpath
+sum(//product[category = 'Điện tử']/total_amount)
+```
+
+### #76 - Đếm sản phẩm trong danh mục "Quần áo"
+
+```xpath
+count(//product[category = 'Quần áo'])
+```
+
+### #77 - Tính tổng giá các sản phẩm có quantity > 5
+
+```xpath
+sum(//product[quantity > 5]/price)
+```
+
+### #78 - Lấy giá cao nhất trong danh mục "Điện tử"
+
+```xpath
+max(//product[category = 'Điện tử']/price)
+```
+
+### #79 - Đếm sản phẩm VIP
+
+```xpath
+count(//product[@type = 'VIP'])
+```
+
+### #80 - Tính tổng discount của tất cả sản phẩm
+
+```xpath
+sum(//product/discount)
+```
+
+---
+
+## 🎯 PHẦN 5: LẤY PHẦN TỬ CỤ THỂ (20 bài)
+
+### #81 - Lấy sản phẩm có thành tiền lớn nhất
+
+```xpath
+//product[total_amount = max(//product/total_amount)]
+```
+
+### #82 - Lấy tên sản phẩm có thành tiền lớn nhất
+
+```xpath
+//product[total_amount = max(//product/total_amount)]/name
+```
+
+### #83 - Lấy tất cả sản phẩm được sắp xếp (không dùng order by)
+
+```xpath
+//product
+```
+
+### #84 - Lấy 3 sản phẩm đầu tiên
+
+```xpath
+//product[position() <= 3]
+```
+
+### #85 - Lấy 5 sản phẩm cuối cùng
+
+```xpath
+//product[position() > count(//product) - 5]
+```
+
+### #86 - Lấy sản phẩm ở vị trí 2 đến 5
+
+```xpath
+//product[position() >= 2 and position() <= 5]
+```
+
+### #87 - Lấy sản phẩm lẻ (vị trí 1, 3, 5...)
+
+```xpath
+//product[position() mod 2 = 1]
+```
+
+### #88 - Lấy sản phẩm chẵn (vị trí 2, 4, 6...)
+
+```xpath
+//product[position() mod 2 = 0]
+```
+
+### #89 - Lấy khách hàng VIP đầu tiên
+
+```xpath
+//customer[@type = 'VIP'][1]
+```
+
+### #90 - Lấy tên khách hàng VIP đầu tiên
+
+```xpath
+//customer[@type = 'VIP'][1]/name
+```
+
+### #91 - Lấy sản phẩm đắt nhất
+
+```xpath
+//product[price = max(//product/price)]
+```
+
+### #92 - Lấy tên sản phẩm đắt nhất
+
+```xpath
+//product[price = max(//product/price)]/name
+```
+
+### #93 - Lấy sản phẩm rẻ nhất
+
+```xpath
+//product[price = min(//product/price)]
+```
+
+### #94 - Lấy danh mục đầu tiên
+
+```xpath
+//product[1]/category
+```
+
+### #95 - Lấy đơn hàng mới nhất (giả sử cuối cùng)
+
+```xpath
+//order[last()]
+```
+
+### #96 - Lấy khách hàng có email dài nhất
+
+```xpath
+//customer[string-length(email) = max(//customer/string-length(email))]
+```
+
+### #97 - Lấy sản phẩm có tên dài nhất
+
+```xpath
+//product[string-length(name) = max(//product/string-length(name))]/name
+```
+
+### #98 - Lấy node anh em của sản phẩm đầu tiên
+
+```xpath
+//product[1]/following-sibling::product
+```
+
+### #99 - Lấy node trước của sản phẩm cuối
+
+```xpath
+//product[last()]/preceding-sibling::product
+```
+
+### #100 - Lấy tất cả node con của khách hàng đầu tiên
+
+```xpath
+//customer[1]/*
+```
+
+---
+
+## 🔗 PHẦN 6: LIÊN KẾT & CẤP ĐỔI (10+ bài)
+
+### #101 - Lấy tên khách hàng của đơn hàng đầu tiên
+
+```xpath
+//order[1]/customer/name
+```
+
+### #102 - Lấy tất cả sản phẩm của đơn hàng
+
+```xpath
+//order/product
+```
+
+### #103 - Lấy tên sản phẩm trong đơn hàng đầu tiên
+
+```xpath
+//order[1]/product/name
+```
+
+### #104 - Lấy node cha của sản phẩm
+
+```xpath
+//product/..
+```
+
+### #105 - Lấy tất cả ancestor của sản phẩm
+
+```xpath
+//product/ancestor::*
+```
+
+### #106 - Lấy node con trực tiếp của khách hàng
+
+```xpath
+//customer/child::*
+```
+
+### #107 - Lấy tất cả node sau sản phẩm thứ 1
+
+```xpath
+//product[1]/following::*
+```
+
+### #108 - Lấy tất cả node trước sản phẩm cuối
+
+```xpath
+//product[last()]/preceding::*
+```
+
+### #109 - Lấy phần tử cùng mức với sản phẩm
+
+```xpath
+//product/parent::*/product
+```
+
+### #110 - Lấy node text của sản phẩm
+
+```xpath
+//product/text()
+```
+
+---
+
+## 📋 CHEAT TABLE
+
+| Bài Toán          | XPath                                     |
+| ----------------- | ----------------------------------------- |
+| Tất cả sản phẩm   | `//product`                               |
+| Sản phẩm thứ 2    | `//product[2]`                            |
+| Sản phẩm cuối     | `//product[last()]`                       |
+| Giá > 50k         | `//product[price > 50000]`                |
+| Danh mục Điện tử  | `//product[category = 'Điện tử']`         |
+| Tổng thành tiền   | `sum(//product/total_amount)`             |
+| Đếm sản phẩm      | `count(//product)`                        |
+| Giá cao nhất      | `max(//product/price)`                    |
+| Giá thấp nhất     | `min(//product/price)`                    |
+| Sản phẩm đắt nhất | `//product[price = max(//product/price)]` |
+
+---
+
+**💡 Mẹo:** Kết hợp các điều kiện với `and/or`, dùng hàm `contains()` để tìm text, `count()` để đếm, `sum()` để cộng.

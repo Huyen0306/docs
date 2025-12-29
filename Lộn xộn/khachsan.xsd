@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="thongtinhoaodn">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mahoadon" type="xs:positiveInteger"></xs:element>
+                <xs:element name="tenkhachhang" type="xs:string"></xs:element>
+                <xs:element name="ngaythanhtoan" type="xs:date"></xs:element>
+                <xs:element name="dstrungtam">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="dsdichvu" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="dichvu" type="xs:string"></xs:element>
+                                        <xs:element name="loai" type="loaitype"></xs:element>
+                                        <xs:element name="solan" type="xs:positiveInteger"></xs:element>
+                                        <xs:element name="dongia" type="xs:nonNegativeInteger"></xs:element>
+                                        <xs:element name="thanhtien" type="xs:nonNegativeInteger"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tongtien" type="xs:nonNegativeInteger">
+                    <xs:annotation>
+                        <xs:documentation>
+                            giá trị tổng tiền bằng tổng thành tiền 
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="loaitype">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="VIP"></xs:enumeration>
+            <xs:enumeration value="cơ bản"></xs:enumeration>
+            <xs:enumeration value="thường"></xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

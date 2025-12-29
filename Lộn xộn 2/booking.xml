@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<khachsan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="booking.xsd">
+    <madon>ks001</madon>
+    <ten>Nguyễn Văn A</ten>
+    <ngaynhan>2025-09-15</ngaynhan>
+    <ngaytra>2025-09-20</ngaytra>
+    <dsphong>
+        <phong>
+            <loai>Đơn</loai>
+            <sodem>4</sodem>
+            <gia>200000</gia>
+            <thanhtien>800000</thanhtien>
+        </phong>
+        <phong>
+            <loai>Đôi</loai>
+            <sodem>3</sodem>
+            <gia>400000</gia>
+            <thanhtien>1200000</thanhtien>
+        </phong>
+    </dsphong>
+    <tongtien>2000000</tongtien>
+</khachsan>

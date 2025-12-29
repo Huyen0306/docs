@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="hoadon.xsl"?>
+<library>
+    <book>
+        <title>Data Structures</title>
+        <author>John Miller</author>
+        <year>2018</year>
+        <price>120000</price>
+        <quantity>5</quantity>
+    </book>
+
+    <book>
+        <title>Learning XML</title>
+        <author>Anne Brown</author>
+        <year>2020</year>
+        <price>90000</price>
+        <quantity>15</quantity>
+    </book>
+
+    <book>
+        <title>Database Systems</title>
+        <author>David Clark</author>
+        <year>2016</year>
+        <price>150000</price>
+        <quantity>8</quantity>
+    </book>
+
+    <book>
+        <title>Web Programming</title>
+        <author>Linda White</author>
+        <year>2023</year>
+        <price>110000</price>
+        <quantity>20</quantity>
+    </book>
+</library>

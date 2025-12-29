@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thongtinhoaodn xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="khachsan.xsd">
+    <mahoadon>98001</mahoadon>
+    <tenkhachhang>Lê Thị B</tenkhachhang>
+    <ngaythanhtoan>2023-08-15</ngaythanhtoan>
+    <dstrungtam>
+        <dsdichvu>
+            <dichvu>masage body</dichvu>
+            <loai>VIP</loai>
+            <solan>2</solan>
+            <dongia>500000</dongia>
+            <thanhtien>1000000</thanhtien>
+        </dsdichvu>
+        <dsdichvu>
+            <dichvu>chăm sóc da</dichvu>
+            <loai>cơ bản</loai>
+            <solan>3</solan>
+            <dongia>300000</dongia>
+            <thanhtien>900000</thanhtien>
+        </dsdichvu>
+        <dsdichvu>
+            <dichvu>gội đầu dưỡng sinh</dichvu>
+            <loai>thường</loai>
+            <solan>1</solan>
+            <dongia>200000</dongia>
+            <thanhtien>200000</thanhtien>
+        </dsdichvu>
+    </dstrungtam>
+    <tongtien>2100000</tongtien>
+</thongtinhoaodn>

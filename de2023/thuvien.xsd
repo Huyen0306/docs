@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="thuvien">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dssach">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="sach"  maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="masach" type="xs:string"></xs:element>
+                                        <xs:element name="tensach" type="xs:string"></xs:element>
+                                        <xs:element name="tacgia" type="xs:string"></xs:element>
+                                        <xs:element name="nxb" type="xs:string"></xs:element>
+                                        <xs:element name="theloai" type="xs:string"></xs:element>
+                                        <xs:element name="soluong" type="xs:integer"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="dsdocgia">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="docgia"  maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="madocgia" type="xs:string"></xs:element>
+                                        <xs:element name="tendocgia" type="xs:string"></xs:element>
+                                        <xs:element name="ngaysinh" type="xs:date"></xs:element>
+                                        <xs:element name="gioitinh" type="xs:string"></xs:element>
+                                        <xs:element name="diachi" type="xs:string"></xs:element>
+                                        <xs:element name="sđt" type="xs:integer"></xs:element>
+                                        <xs:element name="ngaylapthe" type="xs:date"></xs:element>
+                                        <xs:element name="ngayhethan" type="xs:date"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="dsphieumuon">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="phieumuon"  maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="maphieumuon" type="xs:string"></xs:element>
+                                        <xs:element name="madocgia" type="xs:string"></xs:element>
+                                        <xs:element name="ngaymuon" type="xs:date"></xs:element>
+                                        <xs:element name="ngaytra" type="xs:date"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="dschitiet">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="chitietphieumuon"  maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="maphieumuon" type="xs:string"></xs:element>
+                                        <xs:element name="masach" type="xs:string"></xs:element>
+                                        <xs:element name="soluong" type="xs:integer"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

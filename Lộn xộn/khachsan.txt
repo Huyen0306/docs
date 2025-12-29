@@ -1,0 +1,11 @@
+Lấy tên khách hàng.
+//thongtinhoaodn/tenkhachhang
+Lấy tất cả tên dịch vụ.
+//dsdichvu/dichvu
+Lấy dịch vụ có thành tiền cao nhất.
+//dsdichvu[thanhtien=max(//dsdichvu/thanhtien)]
+Tính tổng tiền bằng XPath (gợi ý: sum()).
+sum(//tongtien)
+Lấy các dịch vụ có đơn giá ≥ 300000.
+//dsdichvu[dongia>=300000]
+

@@ -1,0 +1,28 @@
+a. Lấy danh sách tên khách hàng
+//khachsan/ten
+b. Lấy các phòng có loại phòng = 'VIP'
+//phong[loai="VIP"]
+c. Lấy phòng có thành tiền cao nhất
+//phong[thanhtien=max(//phong/thanhtien)]
+d. Tính tổng tiền của một đơn đặt phòng (gợi ý: sum())
+sum(//tongtien)
+
+
+a. Trả về danh sách các phòng dưới dạng:
+<roomList>
+   <room>{
+     return  <service>{$x/dsphong/text()}
+   }</room>
+</roomList>
+
+b. Tính tổng doanh thu của khách sạn:
+<totalRevenue>{
+    sum(//tongtien)
+}</totalRevenue>
+
+
+<totalRevenue>
+{
+    sum(//tongtien[. castable as xs:decimal]/xs:decimal(.))
+}
+</totalRevenue>

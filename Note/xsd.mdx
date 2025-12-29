@@ -1,0 +1,100 @@
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="hoadon">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sohoadon" type="xs:positiveInteger"></xs:element>
+                <xs:element name="hoten" type="xs:string"></xs:element>
+                <xs:element name="ngaylap" type="xs:date"></xs:element>
+                <xs:element name="dichvu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="mathang" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ten" type="xs:string"></xs:element>
+                                        <xs:element name="loai" type="loaiType"></xs:element>
+                                        <xs:element name="soluong" type="xs:positiveInteger"></xs:element>
+                                        <xs:element name="dongia" type="xs:nonNegativeInteger"></xs:element>
+                                        <xs:element name="thanhtien" type="xs:nonNegativeInteger">
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tongtien" type="xs:positiveInteger">
+                    <xs:annotation>
+                        <xs:documentation> Giá trị tongtien phải bằng tổng thanhtien của tất cả các
+                            dịch vụ. (Không bắt buộc validate tự động, chỉ cần ghi chú theo yêu
+                            cầu.) </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="loaiType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A" />
+            <xs:enumeration value="4 chỗ" />
+            <xs:enumeration value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+
+```
+
+```
+xs:string        → Chuỗi ký tự bất kỳ
+xs:normalizedString → Chuỗi đã loại bỏ ký tự xuống dòng, tab
+xs:token         → Chuỗi không có khoảng trắng thừa
+xs:language      → Mã ngôn ngữ (vi, en, fr…)
+xs:Name          → Tên hợp lệ XML (không bắt đầu bằng số)
+xs:NCName        → Name nhưng không có dấu :
+xs:integer       → Số nguyên (… -2, -1, 0, 1, 2 …)
+xs:nonPositiveInteger → Số nguyên ≤ 0
+xs:negativeInteger → Số nguyên < 0
+xs:long          → Số nguyên rất lớn (64-bit)
+xs:int           → Số nguyên (32-bit)
+xs:short         → Số nguyên nhỏ (16-bit)
+xs:byte          → Số nguyên rất nhỏ (8-bit)
+
+xs:nonNegativeInteger → Số nguyên ≥ 0
+xs:unsignedLong  → Số nguyên không âm (64-bit)
+xs:unsignedInt   → Số nguyên không âm (32-bit)
+xs:unsignedShort → Số nguyên không âm (16-bit)
+xs:unsignedByte  → Số nguyên không âm (8-bit)
+xs:positiveInteger → Số nguyên > 0
+xs:decimal       → Số thập phân (không mũ)
+xs:float         → Số thực dấu phẩy động
+xs:double        → Số thực độ chính xác cao
+xs:date          → Ngày (YYYY-MM-DD)
+xs:time          → Giờ (HH:MM:SS)
+xs:dateTime      → Ngày + giờ
+xs:gYear         → Năm (YYYY)
+xs:gYearMonth    → Năm + tháng
+xs:gMonth        → Tháng (--MM)
+xs:gMonthDay     → Tháng + ngày (--MM-DD)
+xs:gDay          → Ngày (--DD)
+xs:boolean       → true | false | 1 | 0
+xs:ID            → Định danh duy nhất
+xs:IDREF         → Tham chiếu đến ID
+xs:IDREFS        → Danh sách IDREF
+xs:base64Binary  → Dữ liệu mã hóa base64
+xs:hexBinary     → Dữ liệu dạng hex
+xs:anyURI        → URL / URI
+xs:QName         → Tên có namespace
+xs:NOTATION      → Định nghĩa kiểu đặc biệt (hiếm dùng)
+Tên, chuỗi        → xs:string
+Ngày              → xs:date
+Số lượng          → xs:positiveInteger
+Tiền              → xs:decimal
+Mã (ID)           → xs:ID
+Đúng / sai        → xs:boolean
+<xs:element name="soluong" type="xs:positiveInteger"/>
+<xs:element name="ngaylapthe" type="xs:date"/>
+<xs:element name="tendocgia" type="xs:string"/>
+```

@@ -1,0 +1,12 @@
+<!ELEMENT thongtinhoaodn (mahoadon,tenkhachhang,ngaythanhtoan,dstrungtam,tongtien)>
+<!ELEMENT mahoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaythanhtoan (#PCDATA)>
+<!ELEMENT dstrungtam (dsdichvu+)>
+<!ELEMENT dsdichvu (dichvu,loai,solan,dongia,thanhtien)>
+<!ELEMENT dichvu (#PCDATA)>
+<!ELEMENT loai (#PCDATA)>
+<!ELEMENT solan (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>

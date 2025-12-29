@@ -1,0 +1,12 @@
+<!ELEMENT hoadonbanhang (sohoadon,sohoadon,khachhang,ngaylap,tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT khachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsbanhang (banhang+)>
+<!ELEMENT banhang (sanpham,loai,soluong,dongia,thanhtien)>
+<!ELEMENT sanpham (#PCDATA)>
+<!ELEMENT loai (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>

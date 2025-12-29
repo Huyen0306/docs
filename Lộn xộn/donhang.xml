@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<donhang xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="donhang.xsd">
+    <madonhang>DH0001</madonhang>
+    <ngaydathang>2025-10-20</ngaydathang>
+    <hoten>Phan Bá Đủ</hoten>
+    <diachi>12 Phan Chu Trinh,Phường thuận hóa, TP.Huế</diachi>
+    <sanpham>
+        <tensp>Chuột không dây Logitech</tensp>
+        <soluong>1</soluong>
+        <giatien>250000</giatien>
+    </sanpham>
+</donhang>

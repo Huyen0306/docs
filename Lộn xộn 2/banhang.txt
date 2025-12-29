@@ -1,0 +1,38 @@
+4️⃣ Viết các biểu thức XPath
+
+a) Lấy tên khách hàng.
+//hoadonbanhang/khachhang
+b) Lấy danh sách tất cả sản phẩm.
+//dsbanhang
+c) Lấy sản phẩm có thành tiền lớn nhất.
+//banhang[thanhtien=max(//banhang/thanhtien)]
+d) Tính tổng thành tiền (dùng sum()).
+sum(//tongtien)
+e) Lấy các sản phẩm có đơn giá ≥ 50.000.
+//dsdichvu[dongia>=300000]
+
+
+
+5️⃣ Viết XQuery
+a) Trả về danh sách các sản phẩm dạng:
+<productList>
+{
+    let $service := //banhang
+    for $item in $service
+        return 
+            <service>
+                <name>{string($item/sanpham)}</name>
+                <type>{string($item/loai)}</type>
+                <quantity>{xs:integer($item/soluong)}</quantity>
+                <price>{xs:integer($item/dongia)}</price>
+                <amount>{xs:integer($item/thanhtien)}</amount>
+            </service>
+}
+</productList>
+
+b) Tính tổng tiền hóa đơn, trả về:<total>...</total>
+let $total := sum(//tongtien)
+return 
+<total>
+  <value>{xs:integer($total)}</value>
+</total>

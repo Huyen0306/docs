@@ -1,0 +1,12 @@
+<!ELEMENT khachsan (madon,ten,ngaynhan,ngaytra,tongtien)>
+<!ELEMENT madon (#PCDATA)>
+<!ELEMENT ten (#PCDATA)>
+<!ELEMENT ngaynhan (#PCDATA)>
+<!ELEMENT ngaytra (#PCDATA)>
+<!ELEMENT dsphong (phong+)>
+<!ELEMENT phong (loai,sodem,gia,thanhtien)>
+<!ELEMENT loai (#PCDATA)>
+<!ELEMENT sodem (#PCDATA)>
+<!ELEMENT gia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>

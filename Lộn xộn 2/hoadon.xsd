@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="hoadonthanhtoan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sohoadon" type="positiveInteger"></xs:element>
+                <xs:element name="hoten" type="xs:string"></xs:element>
+                <xs:element name="ngaylap" type="xs:date"></xs:element>
+                <xs:element name="loai" type="xs:string"></xs:element>
+                <xs:element name="tongtien" type="nonNegativeInteger">
+
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="positiveInteger" >
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"></xs:minInclusive>
+        </xs:restriction>
+    </xs:simpleType>
+   
+    <xs:simpleType name="nonNegativeInteger" >
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"></xs:minInclusive>
+        </xs:restriction>
+    </xs:simpleType>
+     <xs:simpleType name="string" >
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A"></xs:enumeration>
+            <xs:enumeration value="4 chỗ"></xs:enumeration>
+            <xs:enumeration value="1"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="dsthanhtoan">
+        <xs:sequence>
+            <xs:element name="ten" type="xs:string"></xs:element>
+            <xs:element name="loai" type="xs:string"></xs:element>
+            <xs:element name="soluong" type="positiveInteger"></xs:element>
+            <xs:element name="dongia" type="nonNegativeInteger"></xs:element>
+            <xs:element name="thanhtien" type="nonNegativeInteger"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="donvi" type="xs:string" use="optional"></xs:attribute>
+    </xs:complexType>
+</xs:schema>

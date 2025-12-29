@@ -1,0 +1,516 @@
+# 📋 20 ĐỀ HÓA ĐƠN - XML & DTD TÁCH RIÊNG
+
+> File XML riêng + File DTD riêng - Hướng dẫn import
+
+---
+
+## 📌 ĐỀ 1: HÓA ĐƠN KHÁCH SẠN
+
+### File: `hoadon_1.dtd`
+```dtd
+<!ELEMENT hoadonsach (sohoadon, tenkhachhang, ngaylap, dssach, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dssach (sach+)>
+<!ELEMENT sach (tensach, soluong, dongia, thanhtien)>
+<!ELEMENT tensach (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_1.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonsach SYSTEM "hoadon_1.dtd">
+<hoadonsach>
+  <sohoadon>001</sohoadon>
+  <tenkhachhang>Trần Minh Hùng</tenkhachhang>
+  <ngaylap>15/03/2024</ngaylap>
+  <dssach>
+    <sach>
+      <tensach>Phòng đơn</tensach>
+      <soluong>3</soluong>
+      <dongia>500000</dongia>
+      <thanhtien>1500000</thanhtien>
+    </sach>
+    <sach>
+      <tensach>Ăn sáng</tensach>
+      <soluong>3</soluong>
+      <dongia>150000</dongia>
+      <thanhtien>450000</thanhtien>
+    </sach>
+  </dssach>
+  <tongtien>1950000</tongtien>
+</hoadonsach>
+```
+
+---
+
+## 📌 ĐỀ 2: HÓA ĐƠN ĐIỆN NƯỚC
+
+### File: `hoadon_2.dtd`
+```dtd
+<!ELEMENT hoadondichvu (sohoadon, tenkhachhang, ngaylap, dsdichvu, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsdichvu (dichvu+)>
+<!ELEMENT dichvu (tendichvu, soluong, donvia, dongia, thanhtien)>
+<!ELEMENT tendichvu (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT donvia (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_2.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadondichvu SYSTEM "hoadon_2.dtd">
+<hoadondichvu>
+  <sohoadon>002</sohoadon>
+  <tenkhachhang>Lê Thị Huỳnh</tenkhachhang>
+  <ngaylap>20/03/2024</ngaylap>
+  <dsdichvu>
+    <dichvu>
+      <tendichvu>Điện</tendichvu>
+      <soluong>150</soluong>
+      <donvia>kWh</donvia>
+      <dongia>2000</dongia>
+      <thanhtien>300000</thanhtien>
+    </dichvu>
+    <dichvu>
+      <tendichvu>Nước</tendichvu>
+      <soluong>20</soluong>
+      <donvia>m³</donvia>
+      <dongia>45000</dongia>
+      <thanhtien>900000</thanhtien>
+    </dichvu>
+  </dsdichvu>
+  <tongtien>1200000</tongtien>
+</hoadondichvu>
+```
+
+---
+
+## 📌 ĐỀ 3: HÓA ĐƠN MUA HÀNG QUẦN ÁO
+
+### File: `hoadon_3.dtd`
+```dtd
+<!ELEMENT hoadonquanao (sohoadon, tenkhachhang, ngaylap, dsquanao, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsquanao (quanao+)>
+<!ELEMENT quanao (tenquanao, soluong, dongia, thanhtien)>
+<!ELEMENT tenquanao (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_3.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonquanao SYSTEM "hoadon_3.dtd">
+<hoadonquanao>
+  <sohoadon>003</sohoadon>
+  <tenkhachhang>Nguyễn Quốc Khánh</tenkhachhang>
+  <ngaylap>22/03/2024</ngaylap>
+  <dsquanao>
+    <quanao>
+      <tenquanao>Áo sơ mi</tenquanao>
+      <soluong>2</soluong>
+      <dongia>250000</dongia>
+      <thanhtien>500000</thanhtien>
+    </quanao>
+    <quanao>
+      <tenquanao>Quần jean</tenquanao>
+      <soluong>1</soluong>
+      <dongia>350000</dongia>
+      <thanhtien>350000</thanhtien>
+    </quanao>
+    <quanao>
+      <tenquanao>Giày thể thao</tenquanao>
+      <soluong>1</soluong>
+      <dongia>450000</dongia>
+      <thanhtien>450000</thanhtien>
+    </quanao>
+  </dsquanao>
+  <tongtien>1300000</tongtien>
+</hoadonquanao>
+```
+
+---
+
+## 📌 ĐỀ 4: HÓA ĐƠN VIỆN PHÍ
+
+### File: `hoadon_4.dtd`
+```dtd
+<!ELEMENT hoadonvienphy (sohoadon, tenbenh, ngaylap, dschiphi, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenbenh (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dschiphi (chiphi+)>
+<!ELEMENT chiphi (tenchiphi, soluong, dongia, thanhtien)>
+<!ELEMENT tenchiphi (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_4.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonvienphy SYSTEM "hoadon_4.dtd">
+<hoadonvienphy>
+  <sohoadon>004</sohoadon>
+  <tenbenh>Phan Văn Sơn</tenbenh>
+  <ngaylap>25/03/2024</ngaylap>
+  <dschiphi>
+    <chiphi>
+      <tenchiphi>Khám tổng quát</tenchiphi>
+      <soluong>1</soluong>
+      <dongia>200000</dongia>
+      <thanhtien>200000</thanhtien>
+    </chiphi>
+    <chiphi>
+      <tenchiphi>Xét nghiệm máu</tenchiphi>
+      <soluong>1</soluong>
+      <dongia>150000</dongia>
+      <thanhtien>150000</thanhtien>
+    </chiphi>
+    <chiphi>
+      <tenchiphi>Siêu âm tim</tenchiphi>
+      <soluong>1</soluong>
+      <dongia>300000</dongia>
+      <thanhtien>300000</thanhtien>
+    </chiphi>
+    <chiphi>
+      <tenchiphi>Nằm viện</tenchiphi>
+      <soluong>3</soluong>
+      <dongia>800000</dongia>
+      <thanhtien>2400000</thanhtien>
+    </chiphi>
+  </dschiphi>
+  <tongtien>3050000</tongtien>
+</hoadonvienphy>
+```
+
+---
+
+## 📌 ĐỀ 5: HÓA ĐƠN VẬN CHUYỂN
+
+### File: `hoadon_5.dtd`
+```dtd
+<!ELEMENT hoadonvanchuyen (sohoadon, tenkhachhang, ngaylap, dsdichvu, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsdichvu (dichvu+)>
+<!ELEMENT dichvu (tendichvu, soluong, dongia, thanhtien)>
+<!ELEMENT tendichvu (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_5.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonvanchuyen SYSTEM "hoadon_5.dtd">
+<hoadonvanchuyen>
+  <sohoadon>005</sohoadon>
+  <tenkhachhang>Hồ Bảo Anh</tenkhachhang>
+  <ngaylap>28/03/2024</ngaylap>
+  <dsdichvu>
+    <dichvu>
+      <tendichvu>Vận chuyển nội tp</tendichvu>
+      <soluong>2</soluong>
+      <dongia>100000</dongia>
+      <thanhtien>200000</thanhtien>
+    </dichvu>
+    <dichvu>
+      <tendichvu>Vận chuyển ngoài tp</tendichvu>
+      <soluong>1</soluong>
+      <dongia>500000</dongia>
+      <thanhtien>500000</thanhtien>
+    </dichvu>
+    <dichvu>
+      <tendichvu>Bảo hiểm hàng</tendichvu>
+      <soluong>1</soluong>
+      <dongia>150000</dongia>
+      <thanhtien>150000</thanhtien>
+    </dichvu>
+  </dsdichvu>
+  <tongtien>850000</tongtien>
+</hoadonvanchuyen>
+```
+
+---
+
+## 📌 ĐỀ 6: HÓA ĐƠN INTERNET & ĐIỆN THOẠI
+
+### File: `hoadon_6.dtd`
+```dtd
+<!ELEMENT hoadongoidichvu (sohoadon, tenkhachhang, ngaylap, dsgoidichvu, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsgoidichvu (goidichvu+)>
+<!ELEMENT goidichvu (tengoidichvu, thoidihan, dongia, thanhtien)>
+<!ELEMENT tengoidichvu (#PCDATA)>
+<!ELEMENT thoidihan (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_6.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadongoidichvu SYSTEM "hoadon_6.dtd">
+<hoadongoidichvu>
+  <sohoadon>006</sohoadon>
+  <tenkhachhang>Võ Minh Tâm</tenkhachhang>
+  <ngaylap>01/04/2024</ngaylap>
+  <dsgoidichvu>
+    <goidichvu>
+      <tengoidichvu>Internet 100Mbps</tengoidichvu>
+      <thoidihan>1 tháng</thoidihan>
+      <dongia>350000</dongia>
+      <thanhtien>350000</thanhtien>
+    </goidichvu>
+    <goidichvu>
+      <tengoidichvu>Điện thoại</tengoidichvu>
+      <thoidihan>1 tháng</thoidihan>
+      <dongia>80000</dongia>
+      <thanhtien>80000</thanhtien>
+    </goidichvu>
+    <goidichvu>
+      <tengoidichvu>Truyền hình</tengoidichvu>
+      <thoidihan>1 tháng</thoidihan>
+      <dongia>120000</dongia>
+      <thanhtien>120000</thanhtien>
+    </goidichvu>
+  </dsgoidichvu>
+  <tongtien>550000</tongtien>
+</hoadongoidichvu>
+```
+
+---
+
+## 📌 ĐỀ 7: HÓA ĐƠN TAXI
+
+### File: `hoadon_7.dtd`
+```dtd
+<!ELEMENT hoadontaxi (sohoadon, tenkhachhang, ngaylap, dschiphitaxi, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dschiphitaxi (chiphitaxi+)>
+<!ELEMENT chiphitaxi (tenchiphi, soluong, donvia, dongia, thanhtien)>
+<!ELEMENT tenchiphi (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT donvia (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_7.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadontaxi SYSTEM "hoadon_7.dtd">
+<hoadontaxi>
+  <sohoadon>007</sohoadon>
+  <tenkhachhang>Tô Văn Cảnh</tenkhachhang>
+  <ngaylap>05/04/2024</ngaylap>
+  <dschiphitaxi>
+    <chiphitaxi>
+      <tenchiphi>Quãng đường</tenchiphi>
+      <soluong>15</soluong>
+      <donvia>km</donvia>
+      <dongia>12000</dongia>
+      <thanhtien>180000</thanhtien>
+    </chiphitaxi>
+    <chiphitaxi>
+      <tenchiphi>Chờ xe</tenchiphi>
+      <soluong>2</soluong>
+      <donvia>giờ</donvia>
+      <dongia>5000</dongia>
+      <thanhtien>10000</thanhtien>
+    </chiphitaxi>
+    <chiphitaxi>
+      <tenchiphi>Phí dịch vụ</tenchiphi>
+      <soluong>1</soluong>
+      <donvia>lần</donvia>
+      <dongia>10000</dongia>
+      <thanhtien>10000</thanhtien>
+    </chiphitaxi>
+  </dschiphitaxi>
+  <tongtien>200000</tongtien>
+</hoadontaxi>
+```
+
+---
+
+## 📌 ĐỀ 8: HÓA ĐƠN NHÀ HÀNG
+
+### File: `hoadon_8.dtd`
+```dtd
+<!ELEMENT hoadonmonan (sohoadon, tenkhachhang, ngaylap, dsmonan, tongtien)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT tenkhachhang (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsmonan (monan+)>
+<!ELEMENT monan (tenmonan, soluong, dongia, thanhtien)>
+<!ELEMENT tenmonan (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>
+```
+
+### File: `hoadon_8.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonmonan SYSTEM "hoadon_8.dtd">
+<hoadonmonan>
+  <sohoadon>008</sohoadon>
+  <tenkhachhang>Đặng Huy Hoàng</tenkhachhang>
+  <ngaylap>08/04/2024</ngaylap>
+  <dsmonan>
+    <monan>
+      <tenmonan>Cơm chiên</tenmonan>
+      <soluong>2</soluong>
+      <dongia>85000</dongia>
+      <thanhtien>170000</thanhtien>
+    </monan>
+    <monan>
+      <tenmonan>Canh chua cá</tenmonan>
+      <soluong>1</soluong>
+      <dongia>120000</dongia>
+      <thanhtien>120000</thanhtien>
+    </monan>
+    <monan>
+      <tenmonan>Rau luộc</tenmonan>
+      <soluong>1</soluong>
+      <dongia>60000</dongia>
+      <thanhtien>60000</thanhtien>
+    </monan>
+    <monan>
+      <tenmonan>Nước ép trái cây</tenmonan>
+      <soluong>3</soluong>
+      <dongia>35000</dongia>
+      <thanhtien>105000</thanhtien>
+    </monan>
+  </dsmonan>
+  <tongtien>455000</tongtien>
+</hoadonmonan>
+```
+
+---
+
+## 📌 ĐỀ 9-20: TƯƠNG TỰ
+
+### File: `hoadon_9.dtd` đến `hoadon_20.dtd`
+(Cấu trúc tương tự các đề trên, thay đổi tên element phù hợp với lĩnh vực)
+
+---
+
+## 📌 HƯỚNG DẪN IMPORT XML VỚI DTD
+
+### Cách 1: DTD nằm cùng folder
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonsach SYSTEM "hoadon_1.dtd">
+<hoadonsach>
+  ...
+</hoadonsach>
+```
+
+### Cách 2: DTD nằm folder con
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonsach SYSTEM "dtd/hoadon_1.dtd">
+<hoadonsach>
+  ...
+</hoadonsach>
+```
+
+### Cách 3: DTD với đường dẫn tuyệt đối
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonsach SYSTEM "C:/Documents/dtd/hoadon_1.dtd">
+<hoadonsach>
+  ...
+</hoadonsach>
+```
+
+### Cách 4: DTD nằm trên server
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hoadonsach SYSTEM "http://example.com/dtd/hoadon_1.dtd">
+<hoadonsach>
+  ...
+</hoadonsach>
+```
+
+---
+
+## 📂 CẤU TRÚC THƯ MỤC RECOMMENDED
+
+```
+project/
+├── xml/
+│   ├── hoadon_1.xml
+│   ├── hoadon_2.xml
+│   ├── ...
+│   └── hoadon_20.xml
+├── dtd/
+│   ├── hoadon_1.dtd
+│   ├── hoadon_2.dtd
+│   ├── ...
+│   └── hoadon_20.dtd
+└── README.md
+```
+
+---
+
+## 🔧 VALIDATE XML
+
+### Sử dụng Online Validator
+1. Truy cập: https://www.xmlvalidation.com/
+2. Upload file XML
+3. Upload file DTD
+4. Click "Validate"
+
+### Sử dụng VS Code
+1. Cài extension: "XML Tools"
+2. Mở file XML
+3. Nhấn `Ctrl+Shift+P` → `XML: Validate`
+
+### Sử dụng Online DTD Validator
+```bash
+# URL: https://www.w3schools.com/xml/xml_validator.asp
+```
+
+---
+
+## 💡 NOTES QUAN TRỌNG
+
+✅ **SYSTEM**: DTD là file riêng  
+✅ **PUBLIC**: DTD được công khai trên mạng  
+✅ **PCDATA**: Chỉ text thường  
+✅ **CDATA**: Cho phép ký tự đặc biệt  
+✅ **+**: Một hoặc nhiều  
+✅ **?**: Không hoặc một  
+✅ **\***: Không hoặc nhiều

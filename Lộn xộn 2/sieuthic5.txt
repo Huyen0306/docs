@@ -1,0 +1,7 @@
+--a--
+<serviceList>{
+    for $x in /hoadonsieuthi/dshoadon/hoadon
+    return <service>{ $x/sanpham/text() }</service>
+}</serviceList>
+--b--
+<total>{ sum(//thanhtien) }</total>

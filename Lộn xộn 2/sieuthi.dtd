@@ -1,0 +1,12 @@
+<!ELEMENT hoadonsieuthi (madon,tenkh,ngaymua,dshoadon)>
+<!ELEMENT madon (#PCDATA)>
+<!ELEMENT tenkh (#PCDATA)>
+<!ELEMENT ngaymua (#PCDATA)>
+<!ELEMENT dshoadon (hoadon+)>
+<!ELEMENT hoadon (sanpham,loai,soluong,dongia,thanhtien)>
+<!ELEMENT sanpham (#PCDATA)>
+<!ELEMENT loai (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>
+<!ELEMENT tongtien (#PCDATA)>

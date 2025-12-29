@@ -1,0 +1,11 @@
+<!ELEMENT hoadonthanhtoan (sohoadon,hoten,ngaylap,dsthanhtoan)>
+<!ELEMENT sohoadon (#PCDATA)>
+<!ELEMENT hoten (#PCDATA)>
+<!ELEMENT ngaylap (#PCDATA)>
+<!ELEMENT dsthanhtoan (dichvu+)>
+<!ELEMENT dichvu (ten,loai,soluong,dongia,thanhtien)>
+<!ELEMENT ten (#PCDATA)>
+<!ELEMENT loai (#PCDATA)>
+<!ELEMENT soluong (#PCDATA)>
+<!ELEMENT dongia (#PCDATA)>
+<!ELEMENT thanhtien (#PCDATA)>

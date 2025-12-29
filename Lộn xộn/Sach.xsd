@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="\"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="hoadonsach">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sohoadon" type="xs:string"></xs:element>
+                <xs:element name="tenkhachhang" type="xs:string"></xs:element>
+                <xs:element name="ngaylap" type="xs:date"></xs:element>
+                <xs:element name="dssach">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="sach" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="tensach" type="xs:string"></xs:element>
+                                        <xs:element name="soluong" type="xs:integer"></xs:element>
+                                        <xs:element name="dongia" type="xs:nonNegativeInteger"></xs:element>
+                                        <xs:element name="thanhtien" type="xs:nonNegativeInteger"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tongtien" type="xs:nonNegativeInteger"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

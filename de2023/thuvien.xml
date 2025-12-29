@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="thuvien.xsl"?>
+<thuvien xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="thuvien.xsd">
+    <dssach>
+        <sach>
+            <masach>MS001</masach>
+            <tensach>Tiếng việt</tensach>
+            <tacgia>Nguyễn Đăng Khoa</tacgia>
+            <nxb>Khoa học và Kỹ thuật</nxb>
+            <theloai>Thơ</theloai>
+            <soluong>2</soluong>
+        </sach>
+        <sach>
+            <masach>MS002</masach>
+            <tensach>Tiếng việt</tensach>
+            <tacgia>Nguyễn Đăng Khoa</tacgia>
+            <nxb>Việt Nam</nxb>
+            <theloai>Thơ</theloai>
+            <soluong>2</soluong>
+        </sach>
+        <sach>
+            <masach>MS003</masach>
+            <tensach>Tiếng việt</tensach>
+            <tacgia>Nguyễn Đăng Khoa</tacgia>
+            <nxb>Việt Nam</nxb>
+            <theloai>Thơ</theloai>
+            <soluong>2</soluong>
+        </sach>
+    </dssach>
+
+    <dsdocgia>
+        <docgia>
+            <madocgia>DG001</madocgia>
+            <tendocgia>Trần Thị Uyên</tendocgia>
+            <ngaysinh>1988-01-23</ngaysinh>
+            <gioitinh>Nữ</gioitinh>
+            <diachi>Nguyễn Trãi</diachi>
+            <sđt>0278376234</sđt>
+            <ngaylapthe>2022-01-01</ngaylapthe>
+            <ngayhethan>2022-12-01</ngayhethan>
+        </docgia>
+        <docgia>
+            <madocgia>DG002</madocgia>
+            <tendocgia>Trần Văn Hùng</tendocgia>
+            <ngaysinh>1988-01-23</ngaysinh>
+            <gioitinh>Nam</gioitinh>
+            <diachi>Nguyễn Trãi</diachi>
+            <sđt>0278376234</sđt>
+            <ngaylapthe>2020-12-01</ngaylapthe>
+            <ngayhethan>2020-12-01</ngayhethan>
+        </docgia>
+        <docgia>
+            <madocgia>DG003</madocgia>
+            <tendocgia>Trần Văn Hùng</tendocgia>
+            <ngaysinh>1988-01-23</ngaysinh>
+            <gioitinh>Nam</gioitinh>
+            <diachi>Nguyễn Trãi</diachi>
+            <sđt>0278376234</sđt>
+            <ngaylapthe>2020-12-01</ngaylapthe>
+            <ngayhethan>2020-12-01</ngayhethan>
+        </docgia>
+    </dsdocgia>
+
+    <dsphieumuon>
+        <phieumuon>
+            <maphieumuon>PM001</maphieumuon>
+            <madocgia>DG001</madocgia>
+            <ngaymuon>2020-12-01</ngaymuon>
+            <ngaytra>2020-12-09</ngaytra>
+        </phieumuon>
+        <phieumuon>
+            <maphieumuon>PM002</maphieumuon>
+            <madocgia>DG002</madocgia>
+            <ngaymuon>2020-12-01</ngaymuon>
+            <ngaytra>2020-12-09</ngaytra>
+        </phieumuon>
+        <phieumuon>
+            <maphieumuon>PM003</maphieumuon>
+            <madocgia>DG003</madocgia>
+            <ngaymuon>2020-12-01</ngaymuon>
+            <ngaytra>2020-12-09</ngaytra>
+        </phieumuon>
+    </dsphieumuon>
+
+    <dschitiet>
+        <chitietphieumuon>
+            <maphieumuon>PM001</maphieumuon>
+            <masach>MS001</masach>
+            <soluong>3</soluong>
+        </chitietphieumuon>
+        <chitietphieumuon>
+            <maphieumuon>PM002</maphieumuon>
+            <masach>MS002</masach>
+            <soluong>3</soluong>
+        </chitietphieumuon>
+        <chitietphieumuon>
+            <maphieumuon>PM003</maphieumuon>
+            <masach>MS003</masach>
+            <soluong>3</soluong>
+        </chitietphieumuon>
+    </dschitiet>
+    
+</thuvien>

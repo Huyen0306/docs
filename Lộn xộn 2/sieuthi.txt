@@ -1,0 +1,50 @@
+--Lấy tất cả sản phẩm.
+//dshoadon/sanpham
+--Lấy sản phẩm thuộc loại “Thực phẩm”.
+//hoadon[loai="Thực phẩm"]
+--Tính tổng tiền từ XPath.
+sum(//tongtien)
+--Lấy sản phẩm có thành tiền ≥ 40000.
+//hoadon[thanhtien>=40000]
+
+
+
+
+⭐ CÚ PHÁP QUAN TRỌNG NHẤT (CHỈ 3 THỨ!)
+1. for … return
+
+Dùng để lặp qua các phần tử giống như foreach:
+
+for in$x  /root/element
+return $x
+
+2. Điều kiện
+
+Dùng ngoặc vuông giống XPath:
+
+for $x in //hoadon[loai="Thực phẩm"]
+return $x
+
+3. Hàm
+
+XQuery có các hàm như:
+
+sum() — tính tổng
+
+max() — lớn nhất
+
+min() — nhỏ nhất
+
+count() — đếm
+
+Ví dụ:
+
+sum(//thanhtien)
+
+⭐ XQuery dễ hiểu nếu nhớ:
+
+XML giống như:
+
+/hoadonsieuthi
+    /dshoadon
+        /hoadon

@@ -1,0 +1,9 @@
+for $dg in //docgia
+where $dg/ngaylapthe = "2022-01-01"
+return $dg
+
+
+
+for $s in /thuvien/dssach/sach
+where $s/nxb = "Khoa học và Kỹ thuật"
+return $s/tensach

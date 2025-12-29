@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hoadonthanhtoan>
+    <sohoadon>12345</sohoadon>
+    <hoten>Nguyễn Văn A</hoten>
+    <ngaylap>2020-06-01</ngaylap>
+    <dsthanhtoan>
+        <dichvu>
+            <ten>Thuê phòng</ten>
+            <loai>A</loai>
+            <soluong>4</soluong>
+            <dongia>600000</dongia>
+            <thanhtien>2400000</thanhtien>
+        </dichvu>
+        <dichvu>
+            <ten>Thuê xe</ten>
+            <loai>4</loai>
+            <soluong>5</soluong>
+            <dongia>150000</dongia>
+            <thanhtien>750000</thanhtien>
+        </dichvu>
+        <dichvu>
+            <ten>Điện thoại</ten>
+            <loai>1</loai>
+            <soluong>10</soluong>
+            <dongia>50000</dongia>
+            <thanhtien>500000</thanhtien>
+        </dichvu>
+    </dsthanhtoan>
+    <tongtien>3650000</tongtien>
+
+</hoadonthanhtoan>

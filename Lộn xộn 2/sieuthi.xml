@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hoadonsieuthi>
+<madon>DH001</madon>
+<tenkh>Trần Thị B</tenkh>
+<ngaymua>2024-10-05</ngaymua>
+    <dshoadon>
+        <hoadon>
+            <sanpham>Sưã tươi</sanpham>
+            <loai>Thực phẩm</loai>
+            <soluong>3</soluong>
+            <dongia>15000</dongia>
+            <thanhtien>45000</thanhtien>
+        </hoadon>
+        <hoadon>
+            <sanpham>Bánh quy</sanpham>
+            <loai>Ăn nhẹ</loai>
+            <soluong>2</soluong>
+            <dongia>20000</dongia>
+            <thanhtien>40000</thanhtien>
+        </hoadon>
+        <hoadon>
+            <sanpham>Kem đánh răng</sanpham>
+            <loai>Gia dụng</loai>
+            <soluong>1</soluong>
+            <dongia>35000</dongia>
+            <thanhtien>35000</thanhtien>
+        </hoadon>
+    </dshoadon>
+    <tongtien>120000</tongtien>
+</hoadonsieuthi>

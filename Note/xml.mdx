@@ -1,0 +1,42 @@
+
+## 📌 ĐỀ 19: CẤU TRÚC ENUMERATION
+
+### Đề bài mẫu:
+```
+HÓA ĐƠN 019
+Trạng thái: Đã thanh toán
+T-shirt: 3 cái = 360.000 (Còn hàng)
+Quần tây: 2 cái = 800.000 (Hết hàng)
+```
+
+### Giải - XML dùng enum:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<hoa_don status="PAID">
+  <so_hoa_don>019</so_hoa_don>
+  <khach_hang>Bùi Hải Dương</khach_hang>
+  <san_pham>
+    <item>
+      <ten>T-shirt nam</ten>
+      <so_luong>3</so_luong>
+      <gia>120000</gia>
+      <thanh_tien>360000</thanh_tien>
+      <tinh_trang>AVAILABLE</tinh_trang>
+    </item>
+    <item>
+      <ten>Quần tây</ten>
+      <so_luong>2</so_luong>
+      <gia>400000</gia>
+      <thanh_tien>800000</thanh_tien>
+      <tinh_trang>OUT_OF_STOCK</tinh_trang>
+    </item>
+    <item>
+      <ten>Áo khoác</ten>
+      <so_luong>1</so_luong>
+      <gia>600000</gia>
+      <thanh_tien>600000</thanh_tien>
+      <tinh_trang>AVAILABLE</tinh_trang>
+    </item>
+  </san_pham>
+  <tong_tien>1760000</tong_tien>
+</hoa_don>

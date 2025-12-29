@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE hoadonsach SYSTEM "Sach.dtd"> -->
+<hoadonsach xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="Sach.xsd">
+    <sohoadon>HD001</sohoadon>
+    <tenkhachhang>Nguyễn Văn A</tenkhachhang>
+    <ngaylap>2025-02-10</ngaylap>
+    <dssach>
+        <sach>
+            <tensach>Tiếng việt</tensach>
+            <soluong>2</soluong>
+            <dongia>20000</dongia>
+            <thanhtien>40000</thanhtien>
+
+        </sach>
+        <sach>
+            <tensach>Toán</tensach>
+            <soluong>5</soluong>
+            <dongia>10000</dongia>
+            <thanhtien>50000</thanhtien>
+
+        </sach>
+        <sach>
+            <tensach>Tiếng Anh</tensach>
+            <soluong>1</soluong>
+            <dongia>18000</dongia>
+            <thanhtien>18000</thanhtien>
+
+        </sach>
+    </dssach>
+    <tongtien>108000</tongtien>
+</hoadonsach>

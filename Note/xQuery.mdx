@@ -1,0 +1,694 @@
+# 5. Viết truy vấn XQuery
+
+## Dữ liệu XML mẫu (hoadon.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<hoadon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="hoadon.xsd">
+    <sohoadon>12345</sohoadon>
+    <hoten>Nguyễn Văn A</hoten>
+    <ngaylap>2020-06-01</ngaylap>
+    <dichvu>
+        <mathang>
+            <ten>Thuê phòng</ten>
+            <loai>A</loai>
+            <soluong>4</soluong>
+            <dongia>600000</dongia>
+            <thanhtien>2400000</thanhtien>
+        </mathang>
+        <mathang>
+            <ten>Thuê xe</ten>
+            <loai>4 chỗ</loai>
+            <soluong>5</soluong>
+            <dongia>150000</dongia>
+            <thanhtien>750000</thanhtien>
+        </mathang>
+        <mathang>
+            <ten>Điện thoại</ten>
+            <loai>1</loai>
+            <soluong>10</soluong>
+            <dongia>50000</dongia>
+            <thanhtien>500000</thanhtien>
+        </mathang>
+    </dichvu>
+    <tongtien>3650000</tongtien>
+</hoadon>
+```
+
+---
+
+## a. Trả về danh sách các dịch vụ dưới dạng XML: `<serviceList>...</serviceList>`
+
+### Cách 1: Lấy toàn bộ mặt hàng
+```xquery
+<serviceList>
+    {
+        for $item in //mathang
+        return $item
+    }
+</serviceList>
+```
+
+### Cách 2: Chỉ lấy tên dịch vụ
+```xquery
+<serviceList>
+    {
+        for $item in //mathang
+        return <service>{$item/ten/text()}</service>
+    }
+</serviceList>
+```
+
+### Cách 3: Lấy tên và đơn giá
+```xquery
+<serviceList>
+    {
+        for $item in //mathang
+        return 
+            <service>
+                <name>{$item/ten/text()}</name>
+                <price>{$item/dongia/text()}</price>
+            </service>
+    }
+</serviceList>
+```
+
+### Cách 4: Lọc dịch vụ có đơn giá > 100000
+```xquery
+<serviceList>
+    {
+        for $item in //mathang
+        where $item/dongia > 100000
+        return 
+            <service>
+                <name>{$item/ten/text()}</name>
+                <price>{$item/dongia/text()}</price>
+            </service>
+    }
+</serviceList>
+```
+
+### Cách 5: Sắp xếp theo đơn giá giảm dần
+```xquery
+<serviceList>
+    {
+        for $item in //mathang
+        order by xs:integer($item/dongia) descending
+        return 
+            <service>
+                <name>{$item/ten/text()}</name>
+                <price>{$item/dongia/text()}</price>
+            </service>
+    }
+</serviceList>
+```
+
+---
+
+## b. Tính tổng tiền của hóa đơn và trả về: `<total>...</total>`
+
+### Cách 1: Lấy trực tiếp từ XML
+```xquery
+<total>{//tongtien/text()}</total>
+```
+
+### Cách 2: Tính tổng từ thành tiền của các mặt hàng
+```xquery
+<total>{sum(//mathang/thanhtien)}</total>
+```
+
+### Cách 3: Tính tổng từ số lượng * đơn giá
+```xquery
+<total>
+    {
+        sum(
+            for $item in //mathang
+            return $item/soluong * $item/dongia
+        )
+    }
+</total>
+```
+
+### Cách 4: Tổng tiền với định dạng VNĐ
+```xquery
+let $total := sum(//mathang/thanhtien)
+return
+<total currency="VND">{$total}</total>
+```
+
+### Cách 5: Chi tiết tổng tiền của từng loại
+```xquery
+<totalByService>
+    {
+        for $item in //mathang
+        return 
+            <item>
+                <name>{$item/ten/text()}</name>
+                <subtotal>{$item/thanhtien/text()}</subtotal>
+            </item>
+    }
+    <grandTotal>{sum(//mathang/thanhtien)}</grandTotal>
+</totalByService>
+```
+
+---
+
+## c. Tạo bảng HTML liệt kê (Tên dịch vụ, Số lượng, Đơn giá, Thành tiền)
+
+### Cách 1: Bảng HTML cơ bản
+```xquery
+<html>
+<head><title>Danh sách dịch vụ</title></head>
+<body>
+    <h1>Hóa đơn</h1>
+    <table border="1">
+        <tr>
+            <th>Tên dịch vụ</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        {
+            for $item in //mathang
+            return
+                <tr>
+                    <td>{$item/ten/text()}</td>
+                    <td>{$item/soluong/text()}</td>
+                    <td>{$item/dongia/text()}</td>
+                    <td>{$item/thanhtien/text()}</td>
+                </tr>
+        }
+    </table>
+</body>
+</html>
+```
+
+### Cách 2: Bảng HTML với tổng tiền
+```xquery
+<html>
+<head><title>Hóa đơn chi tiết</title></head>
+<body>
+    <h1>Hóa đơn số: {//sohoadon/text()}</h1>
+    <p>Khách hàng: {//hoten/text()}</p>
+    <p>Ngày lập: {//ngaylap/text()}</p>
+    <table border="1">
+        <tr>
+            <th>STT</th>
+            <th>Tên dịch vụ</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        {
+            for $item at $i in //mathang
+            return
+                <tr>
+                    <td>{$i}</td>
+                    <td>{$item/ten/text()}</td>
+                    <td>{$item/soluong/text()}</td>
+                    <td>{$item/dongia/text()}</td>
+                    <td>{$item/thanhtien/text()}</td>
+                </tr>
+        }
+        <tr>
+            <td colspan="4">Tổng cộng</td>
+            <td>{//tongtien/text()}</td>
+        </tr>
+    </table>
+</body>
+</html>
+```
+
+### Cách 3: Bảng HTML lọc mặt hàng có số lượng > 5
+```xquery
+<html>
+<head><title>Dịch vụ số lượng lớn</title></head>
+<body>
+    <h1>Các dịch vụ có số lượng lớn hơn 5</h1>
+    <table border="1">
+        <tr>
+            <th>Tên dịch vụ</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        {
+            for $item in //mathang
+            where $item/soluong > 5
+            return
+                <tr>
+                    <td>{$item/ten/text()}</td>
+                    <td>{$item/soluong/text()}</td>
+                    <td>{$item/dongia/text()}</td>
+                    <td>{$item/thanhtien/text()}</td>
+                </tr>
+        }
+    </table>
+</body>
+</html>
+```
+
+### Cách 4: Bảng HTML sắp xếp theo thành tiền
+```xquery
+<html>
+<head><title>Sắp xếp theo thành tiền</title></head>
+<body>
+    <h1>Dịch vụ (sắp xếp theo thành tiền)</h1>
+    <table border="1">
+        <tr>
+            <th>Tên dịch vụ</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        {
+            for $item in //mathang
+            order by xs:integer($item/thanhtien) descending
+            return
+                <tr>
+                    <td>{$item/ten/text()}</td>
+                    <td>{$item/soluong/text()}</td>
+                    <td>{$item/dongia/text()}</td>
+                    <td>{$item/thanhtien/text()}</td>
+                </tr>
+        }
+    </table>
+</body>
+</html>
+```
+
+### Cách 5: Bảng HTML với thông tin loại dịch vụ
+```xquery
+<html>
+<head><title>Danh sách dịch vụ đầy đủ</title></head>
+<body>
+    <h1>Danh sách dịch vụ</h1>
+    <table border="1">
+        <tr>
+            <th>Tên dịch vụ</th>
+            <th>Loại</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        {
+            for $item in //mathang
+            return
+                <tr>
+                    <td>{$item/ten/text()}</td>
+                    <td>{$item/loai/text()}</td>
+                    <td>{$item/soluong/text()}</td>
+                    <td>{$item/dongia/text()}</td>
+                    <td>{$item/thanhtien/text()}</td>
+                </tr>
+        }
+    </table>
+</body>
+</html>
+```
+
+---
+
+## d. Tạo XML mới gộp tất cả dữ liệu: `<invoiceSummary>...</invoiceSummary>`
+
+### Cách 1: Tóm tắt cơ bản
+```xquery
+<invoiceSummary>
+    <invoiceNumber>{//sohoadon/text()}</invoiceNumber>
+    <customerName>{//hoten/text()}</customerName>
+    <date>{//ngaylap/text()}</date>
+    <services>
+        {
+            for $item in //mathang
+            return
+                <service>
+                    <name>{$item/ten/text()}</name>
+                    <quantity>{$item/soluong/text()}</quantity>
+                    <unitPrice>{$item/dongia/text()}</unitPrice>
+                    <amount>{$item/thanhtien/text()}</amount>
+                </service>
+        }
+    </services>
+    <totalAmount>{//tongtien/text()}</totalAmount>
+</invoiceSummary>
+```
+
+### Cách 2: Tóm tắt với số lượng dịch vụ
+```xquery
+<invoiceSummary>
+    <invoiceNumber>{//sohoadon/text()}</invoiceNumber>
+    <customerName>{//hoten/text()}</customerName>
+    <date>{//ngaylap/text()}</date>
+    <serviceCount>{count(//mathang)}</serviceCount>
+    <services>
+        {//mathang}
+    </services>
+    <totalAmount>{//tongtien/text()}</totalAmount>
+</invoiceSummary>
+```
+
+### Cách 3: Tóm tắt với thống kê
+```xquery
+<invoiceSummary>
+    <invoiceInfo>
+        <number>{//sohoadon/text()}</number>
+        <customer>{//hoten/text()}</customer>
+        <date>{//ngaylap/text()}</date>
+    </invoiceInfo>
+    <statistics>
+        <totalServices>{count(//mathang)}</totalServices>
+        <totalQuantity>{sum(//mathang/soluong)}</totalQuantity>
+        <averagePrice>{avg(//mathang/dongia)}</averagePrice>
+        <minPrice>{min(//mathang/dongia)}</minPrice>
+        <maxPrice>{max(//mathang/dongia)}</maxPrice>
+    </statistics>
+    <services>
+        {
+            for $item in //mathang
+            return
+                <service>
+                    <name>{$item/ten/text()}</name>
+                    <amount>{$item/thanhtien/text()}</amount>
+                </service>
+        }
+    </services>
+    <totalAmount>{//tongtien/text()}</totalAmount>
+</invoiceSummary>
+```
+
+### Cách 4: Tóm tắt với phân loại
+```xquery
+<invoiceSummary>
+    <header>
+        <invoiceNumber>{//sohoadon/text()}</invoiceNumber>
+        <customerName>{//hoten/text()}</customerName>
+        <date>{//ngaylap/text()}</date>
+    </header>
+    <highValueServices>
+        {
+            for $item in //mathang
+            where $item/thanhtien >= 1000000
+            return
+                <service>
+                    <name>{$item/ten/text()}</name>
+                    <amount>{$item/thanhtien/text()}</amount>
+                </service>
+        }
+    </highValueServices>
+    <lowValueServices>
+        {
+            for $item in //mathang
+            where $item/thanhtien < 1000000
+            return
+                <service>
+                    <name>{$item/ten/text()}</name>
+                    <amount>{$item/thanhtien/text()}</amount>
+                </service>
+        }
+    </lowValueServices>
+    <footer>
+        <totalAmount>{//tongtien/text()}</totalAmount>
+    </footer>
+</invoiceSummary>
+```
+
+### Cách 5: Tóm tắt đầy đủ với format mới
+```xquery
+<invoiceSummary>
+    <invoice id="{//sohoadon/text()}">
+        <customer>
+            <fullName>{//hoten/text()}</fullName>
+        </customer>
+        <issueDate>{//ngaylap/text()}</issueDate>
+        <items count="{count(//mathang)}">
+            {
+                for $item at $pos in //mathang
+                return
+                    <item position="{$pos}">
+                        <serviceName>{$item/ten/text()}</serviceName>
+                        <category>{$item/loai/text()}</category>
+                        <quantity>{$item/soluong/text()}</quantity>
+                        <unitPrice>{$item/dongia/text()}</unitPrice>
+                        <subtotal>{$item/thanhtien/text()}</subtotal>
+                    </item>
+            }
+        </items>
+        <summary>
+            <subtotal>{sum(//mathang/thanhtien)}</subtotal>
+            <tax>0</tax>
+            <grandTotal>{//tongtien/text()}</grandTotal>
+        </summary>
+    </invoice>
+</invoiceSummary>
+```
+
+---
+
+## Ví dụ bổ sung với dữ liệu khác
+
+### Dữ liệu XML mẫu 2 (sinhvien.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<danhsach>
+    <sinhvien>
+        <mssv>SV001</mssv>
+        <hoten>Trần Văn B</hoten>
+        <lop>CNTT01</lop>
+        <diemtb>8.5</diemtb>
+    </sinhvien>
+    <sinhvien>
+        <mssv>SV002</mssv>
+        <hoten>Lê Thị C</hoten>
+        <lop>CNTT02</lop>
+        <diemtb>7.2</diemtb>
+    </sinhvien>
+    <sinhvien>
+        <mssv>SV003</mssv>
+        <hoten>Phạm Văn D</hoten>
+        <lop>CNTT01</lop>
+        <diemtb>9.0</diemtb>
+    </sinhvien>
+</danhsach>
+```
+
+### a. Danh sách sinh viên
+```xquery
+<studentList>
+    {
+        for $sv in //sinhvien
+        return
+            <student>
+                <id>{$sv/mssv/text()}</id>
+                <name>{$sv/hoten/text()}</name>
+            </student>
+    }
+</studentList>
+```
+
+### b. Tính điểm trung bình
+```xquery
+<averageScore>{avg(//sinhvien/diemtb)}</averageScore>
+```
+
+### c. Bảng HTML sinh viên
+```xquery
+<html>
+<head><title>Danh sách sinh viên</title></head>
+<body>
+    <h1>Danh sách sinh viên</h1>
+    <table border="1">
+        <tr>
+            <th>MSSV</th>
+            <th>Họ tên</th>
+            <th>Lớp</th>
+            <th>Điểm TB</th>
+        </tr>
+        {
+            for $sv in //sinhvien
+            return
+                <tr>
+                    <td>{$sv/mssv/text()}</td>
+                    <td>{$sv/hoten/text()}</td>
+                    <td>{$sv/lop/text()}</td>
+                    <td>{$sv/diemtb/text()}</td>
+                </tr>
+        }
+    </table>
+</body>
+</html>
+```
+
+### d. Tổng hợp sinh viên
+```xquery
+<studentSummary>
+    <totalStudents>{count(//sinhvien)}</totalStudents>
+    <averageScore>{avg(//sinhvien/diemtb)}</averageScore>
+    <highestScore>{max(//sinhvien/diemtb)}</highestScore>
+    <lowestScore>{min(//sinhvien/diemtb)}</lowestScore>
+    <students>
+        {//sinhvien}
+    </students>
+</studentSummary>
+```
+
+---
+
+### Dữ liệu XML mẫu 3 (sanpham.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<cuahang>
+    <sanpham>
+        <masp>SP001</masp>
+        <ten>Laptop Dell</ten>
+        <gia>15000000</gia>
+        <soluong>10</soluong>
+        <danhmuc>Điện tử</danhmuc>
+    </sanpham>
+    <sanpham>
+        <masp>SP002</masp>
+        <ten>Bàn phím cơ</ten>
+        <gia>1500000</gia>
+        <soluong>25</soluong>
+        <danhmuc>Phụ kiện</danhmuc>
+    </sanpham>
+    <sanpham>
+        <masp>SP003</masp>
+        <ten>Chuột không dây</ten>
+        <gia>500000</gia>
+        <soluong>50</soluong>
+        <danhmuc>Phụ kiện</danhmuc>
+    </sanpham>
+</cuahang>
+```
+
+### a. Danh sách sản phẩm
+```xquery
+<productList>
+    {
+        for $sp in //sanpham
+        return
+            <product>
+                <code>{$sp/masp/text()}</code>
+                <name>{$sp/ten/text()}</name>
+                <price>{$sp/gia/text()}</price>
+            </product>
+    }
+</productList>
+```
+
+### b. Tổng giá trị kho hàng
+```xquery
+<inventoryValue>
+    {
+        sum(
+            for $sp in //sanpham
+            return $sp/gia * $sp/soluong
+        )
+    }
+</inventoryValue>
+```
+
+### c. Bảng HTML sản phẩm
+```xquery
+<html>
+<head><title>Danh sách sản phẩm</title></head>
+<body>
+    <h1>Danh sách sản phẩm</h1>
+    <table border="1">
+        <tr>
+            <th>Mã SP</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Danh mục</th>
+        </tr>
+        {
+            for $sp in //sanpham
+            return
+                <tr>
+                    <td>{$sp/masp/text()}</td>
+                    <td>{$sp/ten/text()}</td>
+                    <td>{$sp/gia/text()}</td>
+                    <td>{$sp/soluong/text()}</td>
+                    <td>{$sp/danhmuc/text()}</td>
+                </tr>
+        }
+    </table>
+</body>
+</html>
+```
+
+### d. Tổng hợp sản phẩm theo danh mục
+```xquery
+<productSummary>
+    <totalProducts>{count(//sanpham)}</totalProducts>
+    <categories>
+        {
+            for $dm in distinct-values(//sanpham/danhmuc)
+            return
+                <category name="{$dm}">
+                    <count>{count(//sanpham[danhmuc = $dm])}</count>
+                    <products>
+                        {
+                            for $sp in //sanpham[danhmuc = $dm]
+                            return <product>{$sp/ten/text()}</product>
+                        }
+                    </products>
+                </category>
+        }
+    </categories>
+    <totalValue>
+        {
+            sum(
+                for $sp in //sanpham
+                return $sp/gia * $sp/soluong
+            )
+        }
+    </totalValue>
+</productSummary>
+```
+
+---
+
+## Các hàm XQuery thường dùng
+
+| Hàm | Mô tả | Ví dụ |
+|-----|-------|-------|
+| `sum()` | Tính tổng | `sum(//gia)` |
+| `count()` | Đếm số lượng | `count(//sanpham)` |
+| `avg()` | Tính trung bình | `avg(//diemtb)` |
+| `min()` | Giá trị nhỏ nhất | `min(//gia)` |
+| `max()` | Giá trị lớn nhất | `max(//gia)` |
+| `distinct-values()` | Lấy giá trị duy nhất | `distinct-values(//loai)` |
+| `text()` | Lấy nội dung text | `//ten/text()` |
+| `concat()` | Nối chuỗi | `concat("Hello", " ", "World")` |
+| `contains()` | Kiểm tra chứa chuỗi | `contains(ten, "Laptop")` |
+| `starts-with()` | Bắt đầu bằng | `starts-with(masp, "SP")` |
+
+---
+
+## Cú pháp FLWOR
+
+```
+F - for     : duyệt qua các phần tử
+L - let     : gán biến
+W - where   : điều kiện lọc
+O - order by: sắp xếp
+R - return  : trả về kết quả
+```
+
+### Ví dụ đầy đủ FLWOR:
+```xquery
+for $item in //mathang
+let $total := $item/soluong * $item/dongia
+where $total > 500000
+order by $total descending
+return
+    <service>
+        <name>{$item/ten/text()}</name>
+        <total>{$total}</total>
+    </service>
+```

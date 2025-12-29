@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="hoadon">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sohoadon" type="xs:positiveInteger"></xs:element>
+                <xs:element name="hoten" type="xs:string"></xs:element>
+                <xs:element name="ngaylap" type="xs:date"></xs:element>
+                <xs:element name="dichvu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="mathang" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ten" type="xs:string"></xs:element>
+                                        <xs:element name="loai" type="loaiType"></xs:element>
+                                        <xs:element name="soluong" type="xs:positiveInteger"></xs:element>
+                                        <xs:element name="dongia" type="xs:nonNegativeInteger"></xs:element>
+                                        <xs:element name="thanhtien" type="xs:nonNegativeInteger">
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tongtien" type="xs:positiveInteger">
+                    <xs:annotation>
+                        <xs:documentation> Giá trị tongtien phải bằng tổng thanhtien của tất cả các
+                            dịch vụ. (Không bắt buộc validate tự động, chỉ cần ghi chú theo yêu
+                            cầu.) </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="loaiType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A" />
+            <xs:enumeration value="4 chỗ" />
+            <xs:enumeration value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
